@@ -25,8 +25,8 @@ def make_rotX( theta ):
 def make_rotY( theta ):
     theta = theta * (math.pi / 180)
     mRY = [[1, 0, 0, 0], [0, int(math.cos(theta)), -1 * int(math.sin(theta)), 0], [0, int(math.sin(theta)), int(math.cos(theta)), 0], [0, 0, 0, 1]]
-    return mRX
-    
+    return mRY
+
 def make_rotZ( theta ):
     theta = theta * (math.pi / 180)
     mRZ = [[int(math.cos(theta)), 0, int(math.sin(theta)), 0], [0, 1, 0, 0], [-1 * int(math.sin(theta)), 0, int(math.cos(theta)), 0], [0, 0, 0, 1]]
