@@ -40,48 +40,50 @@ def parse_file( fname, points, transform, screen, color ):
         if lines[i] == 'line':
             s = map(int, lines[i+1].split(' '))
             points.append([s[0], s[1], s[2], 1])
-            points.append([s[3], s[4], s[5], 1])
-            i = i + 1
+            print('line')
 
-        if lines[i] == 'ident':
+        elif lines[i] == 'ident':
             ident(transform)
 
         if lines[i] == 'scale':
             s = lines[i+1].split(' ')
             matrix_mult(make_scale(int(s[0]), int(s[1]), int(s[2])), transform)
-            i = i + 1
+            print('scale')
 
-        if lines[i] == 'move':
+        elif lines[i] == 'move':
             s = lines[i+1].split(' ')
             m = make_translate(int(s[0]), int(s[1]), int(s[2]))
-            matrix_mult(transform, m)
-            transform = m
-            i = i + 1
+            matrix_mult(m ,transform)
+            print('move')
 
-        if lines[i] == 'rotate':
+        elif lines[i] == 'rotate':
             s = lines[i+1].split(' ')
             if s[0] == 'x':
                 matrix_mult(make_rotX(int(s[1])), transform)
+                print('rotate X')
             if s[0] == 'y':
                 matrix_mult(make_rotY(int(s[1])), transform)
+                print('rotate Y')
             if s[0] == 'z':
                 matrix_mult(make_rotZ(int(s[1])), transform)
-            i = i + 1
+                print('rotate Z')
 
-        if lines[i] == 'apply':
+        elif lines[i] == 'apply':
             matrix_mult(transform, points)
+            for i in range(len(points)):
+                points[i] = map(int, points[i])
 
-        if lines[i] == 'display':
+        elif lines[i] == 'display':
             clear_screen(screen)
             draw_lines(points, screen, color)
             display(screen)
 
-        if lines[i] == 'save':
+        elif lines[i] == 'save':
             s = lines[i+1]
             clear_screen(screen)
             draw_lines(points, screen, color)
             save_extension(screen, s)
             i = i + 1
 
-        if lines[i] == 'quit':
+        elif lines[i] == 'quit':
             break

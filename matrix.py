@@ -10,7 +10,7 @@ z0  z1  ... zn
 import math
 
 def make_translate( x, y, z ):
-    mT = [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
+    mT = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [x, y, z, 1]]
     return mT
 
 def make_scale( x, y, z ):
@@ -19,17 +19,17 @@ def make_scale( x, y, z ):
 
 def make_rotX( theta ):
     theta = theta * (math.pi / 180)
-    mRX = [[1, 0, 0, 0], [0, int(math.cos(theta)), -1 * int(math.sin(theta)), 0], [0, int(math.sin(theta)), int(math.cos(theta)), 0], [0, 0, 0, 1]]
+    mRX = [[1, 0, 0, 0], [0, math.cos(theta), math.sin(theta), 0], [0, -1 * math.sin(theta), math.cos(theta), 0], [0, 0, 0, 1]]
     return mRX
 
 def make_rotY( theta ):
     theta = theta * (math.pi / 180)
-    mRY = [[1, 0, 0, 0], [0, int(math.cos(theta)), -1 * int(math.sin(theta)), 0], [0, int(math.sin(theta)), int(math.cos(theta)), 0], [0, 0, 0, 1]]
+    mRY = [[math.cos(theta), 0, -1 * math.sin(theta), 0], [0, 1, 0, 0], [math.sin(theta), 0, math.cos(theta), 0], [0, 0, 0, 1]]
     return mRY
 
 def make_rotZ( theta ):
     theta = theta * (math.pi / 180)
-    mRZ = [[int(math.cos(theta)), 0, int(math.sin(theta)), 0], [0, 1, 0, 0], [-1 * int(math.sin(theta)), 0, int(math.cos(theta)), 0], [0, 0, 0, 1]]
+    mRZ = [[math.cos(theta), math.sin(theta), 0, 0], [-1 * math.sin(theta), math.cos(theta), 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
     return mRZ
 
 #print the matrix such that it looks like
