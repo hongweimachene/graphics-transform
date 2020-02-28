@@ -40,12 +40,13 @@ def parse_file( fname, points, transform, screen, color ):
         if lines[i] == 'line':
             s = map(int, lines[i+1].split(' '))
             points.append([s[0], s[1], s[2], 1])
+            points.append([s[3], s[4], s[5], 1])
             print('line')
 
         elif lines[i] == 'ident':
             ident(transform)
 
-        if lines[i] == 'scale':
+        elif lines[i] == 'scale':
             s = lines[i+1].split(' ')
             matrix_mult(make_scale(int(s[0]), int(s[1]), int(s[2])), transform)
             print('scale')
@@ -61,10 +62,12 @@ def parse_file( fname, points, transform, screen, color ):
             if s[0] == 'x':
                 matrix_mult(make_rotX(int(s[1])), transform)
                 print('rotate X')
-            if s[0] == 'y':
+
+            elif s[0] == 'y':
                 matrix_mult(make_rotY(int(s[1])), transform)
                 print('rotate Y')
-            if s[0] == 'z':
+
+            elif s[0] == 'z':
                 matrix_mult(make_rotZ(int(s[1])), transform)
                 print('rotate Z')
 

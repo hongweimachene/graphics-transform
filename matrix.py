@@ -38,7 +38,7 @@ def print_matrix( matrix ):
     s = ''
     for r in range( len( matrix[0] ) ):
         for c in range( len(matrix) ):
-            s+= str(matrix[c][r]) + ' '
+            s+= str(matrix[c][r]) + '\t'
         s+= '\n'
     print(s)
 

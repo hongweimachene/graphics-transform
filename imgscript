@@ -1,0 +1,29 @@
+line
+100 400 0 150 400 0
+line
+100 350 0 150 350 0
+line
+100 400 0 100 350 0
+line
+150 400 0 150 350 0
+line
+100 400 50 150 400 50
+line
+100 350 50 150 350 50
+line
+100 400 50 100 350 50
+line
+150 400 50 150 350 50
+display
+ident
+rotate
+z 30
+rotate
+y 30
+rotate
+z 30
+apply
+display
+save
+img.png
+quit
